@@ -6,7 +6,7 @@ class Boundary {
   float w;
   float h;
   
-  Body b;
+  Body body;
   
   Boundary(float x_,float y_, float w_, float h_) 
   {
@@ -16,11 +16,16 @@ class Boundary {
     h = h_;
     
   //Defining our shape
-  PolygonShape ar = new PolygonShape();
+  PolygonShape a = new PolygonShape();
   
   float box2dW = box2d.scalarPixelsToWorld(w/2);
   float box2dH = box2d.scalarPixelsToWorld(h/2);
   
-  ar.setAsBox(box2dW, box2dH);
+  a.setAsBox(box2dW, box2dH);
   
+  //Defining the body to go for the shape
+  BodyDef b = new BodyDef();
+  b.type = BodyType.STATIC;
+  b.position.set(box2d.coordPixelsToWorld(x,y));
+  body = box2d.createBody(b);
 }
