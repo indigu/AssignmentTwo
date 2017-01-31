@@ -6,6 +6,8 @@ class Boundary {
   float w;
   float h;
   
+  color col;
+  
   Body body;
   
   Boundary(float x_,float y_, float w_, float h_) 
@@ -14,6 +16,8 @@ class Boundary {
     y = y_;
     w = w_;
     h = h_;
+    
+    col = color(#0850C1);
     
   //Defining our shape
   PolygonShape a = new PolygonShape();
@@ -30,11 +34,11 @@ class Boundary {
   body = box2d.createBody(b);
   
   }
-  //Defining the fixture in order to attach our shape into the body
   
+  //Defining the fixture in order to attach our shape into the body
   void show() 
   {
-    fill(0);
+    fill(col);
     stroke(0);
     rectMode(CENTER);
     rect(x,y,w,h);

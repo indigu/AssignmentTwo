@@ -19,8 +19,8 @@ void setup()
   blockage = new ArrayList<Boundary>();
   
   blockage.add(new Boundary(0, height-5, width*2 ,10));
-  blockage.add(new Boundary(5, height, 10 , height*2));
-  blockage.add(new Boundary(width-5, height, 10 ,height*2));
+  blockage.add(new Boundary(5, height, 10 , height*6));
+  blockage.add(new Boundary(width-5, height, 10 ,height*6));
 }
 
 void draw()
