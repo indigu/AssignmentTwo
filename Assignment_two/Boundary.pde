@@ -28,4 +28,15 @@ class Boundary {
   b.type = BodyType.STATIC;
   b.position.set(box2d.coordPixelsToWorld(x,y));
   body = box2d.createBody(b);
+  
+  }
+  //Defining the fixture in order to attach our shape into the body
+  
+  void show() 
+  {
+    fill(0);
+    stroke(0);
+    rectMode(CENTER);
+    rect(x,y,w,h);
+  }
 }
