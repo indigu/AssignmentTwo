@@ -5,15 +5,29 @@ import org.jbox2d.dynamics.*;
 
 Box2DProcessing box2d;
 
+//A list we'll use to track fixed objects
+ArrayList<Boundary> blockage;
+
 void setup()
 {
-  size(450,600);
+  size(450, 600);
   smooth();
   
+  box2d = new Box2DProcessing(this);
+  box2d.createWorld();
   
+  blockage = new ArrayList<Boundary>();
+  
+  blockage.add(new Boundary(0, height-5, width*2 ,10));
+  blockage.add(new Boundary(5, height, 10 , height*2));
+  blockage.add(new Boundary(width-5, height, 10 ,height*2));
 }
 
 void draw()
 {
-  background(0);
+  background(255);
+  
+  for (Boundary wall: blockage) {
+    wall.show();
+  }
 }
