@@ -5,7 +5,7 @@ import org.jbox2d.dynamics.*;
 
 void setup()
 {
-  size(800,800);
+  size(450,600);
 }
 
 void draw()
