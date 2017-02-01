@@ -39,7 +39,7 @@ class Boundary {
   void show() 
   {
     fill(col);
-    stroke(0);
+    noStroke();
     rectMode(CENTER);
     rect(x,y,w,h);
   }
