@@ -6,8 +6,9 @@ import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.*;
 
-//
 Box2DProcessing box2d;
+
+Player one;
 
 //A list we'll use to track fixed objects
 ArrayList<Boundary> blockage;
@@ -19,6 +20,9 @@ void setup()
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
+  
+  //Created the player into the world
+  one = new Player(width/2,height/2);
   
   blockage = new ArrayList<Boundary>();
   
