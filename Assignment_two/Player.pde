@@ -16,5 +16,16 @@ class Player
     
     //confused about what to add, i think i need to learn some more
   }
+  
+  
+  //After many trials, I decided to create a different function and call it
+  //to the constructor later
+  void createPlayer(Vec2 center, float w_, float h_) {
+    // Define and create the body
+    BodyDef play = new BodyDef();
+    play.type = BodyType.DYNAMIC;
+    play.position.set(box2d.coordPixelsToWorld(center));
+    player = box2d.createBody(play);
+  }
 }
   
