@@ -1,9 +1,13 @@
 class Player
 {
   Body player;
+  Body lowPlayer;
   
   float w;
   float h;
+  float r;
+  
+  color col;
   
   //Constructor
   Player(float x_, float y_)
@@ -19,18 +23,53 @@ class Player
     player.setUserData(this);
   }
   
+  lowerPlayer(float x, float y)
+  {
+    r = 8;
+    
+    //Making the body and setting it's position
+    BodyDef cir = new BodyDef();
+    cir.position = box2d.coordPixelsToWorld(x,y);
+    cir.type = BodyType.DYNAMIC;
+    lowPlayer = box2d.world.createBody(cir);
+    
+    // Make the body's shape a circle
+    CircleShape cs = new CircleShape();
+    cs.m_radius = box2d.scalarPixelsToWorld(r);
+    
+    FixtureDef fd = new FixtureDef();
+    fd.shape = cs;
+    // Parameters for physics
+    fd.density = 1;
+    fd.friction = 0.01;
+    fd.restitution = 0.3;
+    
+    //Adding my fixture to the lowPlayer
+    lowPlayer.createFixture(fd);
+    lowPlayer.setLinearVelocity(new Vec2(random(-3,3), random(3, 6)));
+    
+    col = color(200);
+  }
+  
   void display() 
   {
     //Getting the player's position
     Vec2 pos = box2d.getBodyPixelCoord(player);
 
+    float posX = 0;
+    float posY = 250;
+    
     rectMode(PConstants.CENTER);
     pushMatrix();
     translate(pos.x, pos.y);
     fill(#FEFF34);
     stroke(0);
-    rect(0, 250, w, h);
+    rect(posX, posY, w, h);
     popMatrix();
+    
+    
+    
+    
   }
   
   //After many trials, I decided to create a different function and call it
