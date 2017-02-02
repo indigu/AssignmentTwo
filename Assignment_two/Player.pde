@@ -67,7 +67,17 @@ class Player
     rect(posX, posY, w, h);
     popMatrix();
     
-    
+    Vec2 pos = box2d.getBodyPixelCoord(body);
+    // Get its angle of rotation
+    float a = body.getAngle();
+    pushMatrix();
+    translate(pos.x,pos.y);
+    rotate(a);
+    fill(col);
+    stroke(0);
+    strokeWeight(1);
+    ellipse(0,0,r*2,r*2);
+    popMatrix();
     
     
   }
