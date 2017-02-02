@@ -6,7 +6,7 @@ class Player
   float h;
   
   //Constructor
-  Box(float x_, float y_)
+  Player(float x_, float y_)
   {
     float x = x_;
     float y = y_;
@@ -26,6 +26,12 @@ class Player
     play.type = BodyType.DYNAMIC;
     play.position.set(box2d.coordPixelsToWorld(center));
     player = box2d.createBody(play);
+    
+    //Definining my player, I made it a box to make it easier for myself    
+    PolygonShape box = new PolygonShape();
+    float box2dW = box2d.scalarPixelsToWorld(w_/2);
+    float box2dH = box2d.scalarPixelsToWorld(h_/2);
+    box.setAsBox(box2dW, box2dH);
   }
 }
   
