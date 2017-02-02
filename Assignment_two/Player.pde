@@ -32,6 +32,17 @@ class Player
     float box2dW = box2d.scalarPixelsToWorld(w_/2);
     float box2dH = box2d.scalarPixelsToWorld(h_/2);
     box.setAsBox(box2dW, box2dH);
+    
+    // Defining fixture
+    FixtureDef fix1 = new FixtureDef();
+    fix1.shape = box;
+    
+    // Parameters that affect physics
+    fix1.density = 1;
+    fix1.friction = 0.3;
+    fix1.restitution = 0.5;
+    
+    player.createFixture(fix1);
   }
 }
   
