@@ -11,16 +11,32 @@ class Player
     float x = x_;
     float y = y_;
     
-    w = 24;
-    h = 24;
+    w = 15;
+    h = 15;
     
-    //confused about what to add, i think i need to learn some more
+    //created the player
+    createPlayer(new Vec2(x, y), w, h);
+    player.setUserData(this);
   }
   
+  void display() 
+  {
+    //Getting the player's position
+    Vec2 pos = box2d.getBodyPixelCoord(player);
+
+    rectMode(PConstants.CENTER);
+    pushMatrix();
+    translate(pos.x, pos.y);
+    fill(#FEFF34);
+    stroke(0);
+    rect(0, 250, w, h);
+    popMatrix();
+  }
   
   //After many trials, I decided to create a different function and call it
   //to the constructor later
-  void createPlayer(Vec2 center, float w_, float h_) {
+  void createPlayer(Vec2 center, float w_, float h_) 
+  {
     // Define and create the body
     BodyDef play = new BodyDef();
     play.type = BodyType.DYNAMIC;

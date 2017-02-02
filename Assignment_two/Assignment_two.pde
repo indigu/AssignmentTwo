@@ -38,4 +38,6 @@ void draw()
   for (Boundary wall: blockage) {
     wall.show();
   }
+  
+  one.display();
 }
