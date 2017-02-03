@@ -12,47 +12,46 @@ class Player
   //Constructor
   Player(float x_, float y_)
   {
-    float x = x_;
-    float y = y_;
     
-    w = 15;
-    h = 15;
+    this.w = 15;
+    this.h = 15;
     
     //created the player
-    createPlayer(new Vec2(x, y), w, h);
-    player.setUserData(this);
+    createPlayer(new Vec2(x_, y_), w, h);
   }
   
   void display() 
   {
     //Getting the player's position
     Vec2 pos = box2d.getBodyPixelCoord(player);
+    float a = player.getAngle();
     
-    rectMode(PConstants.CENTER);
+    rectMode(CENTER);
     pushMatrix();
+    rotate(-a);
     translate(pos.x, pos.y);
     fill(#FEFF34);
     stroke(0);
-    rect(posX, posY, w, h);
+    rect(0, 0, w, h);
     popMatrix();
-    
   }
   
   //After many trials, I decided to create a different function and call it
   //to the constructor later
   void createPlayer(Vec2 center, float w_, float h_) 
   {
-    // Define and create the body
-    BodyDef play = new BodyDef();
-    play.type = BodyType.DYNAMIC;
-    play.position.set(box2d.coordPixelsToWorld(center));
-    player = box2d.createBody(play);
     
     //Definining my player, I made it a box to make it easier for myself    
     PolygonShape box = new PolygonShape();
     float box2dW = box2d.scalarPixelsToWorld(w_/2);
     float box2dH = box2d.scalarPixelsToWorld(h_/2);
     box.setAsBox(box2dW, box2dH);
+    
+    // Define and create the body
+    BodyDef play = new BodyDef();
+    play.type = BodyType.DYNAMIC;
+    play.position.set(box2d.coordPixelsToWorld(center));
+    player = box2d.createBody(play);
     
     // Defining fixture
     FixtureDef fix1 = new FixtureDef();
@@ -64,6 +63,7 @@ class Player
     fix1.restitution = 0.5;
     
     player.createFixture(fix1);
+    player.setUserData(this);
   }
 }
   

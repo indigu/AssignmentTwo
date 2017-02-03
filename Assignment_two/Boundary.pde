@@ -12,10 +12,10 @@ class Boundary {
   
   Boundary(float x_,float y_, float w_, float h_) 
   {
-    x = x_;
-    y = y_;
-    w = w_;
-    h = h_;
+    this.x = x_;
+    this.y = y_;
+    this.w = w_;
+    this.h = h_;
     
     col = color(#0850C1);
     
@@ -33,14 +33,23 @@ class Boundary {
   b.position.set(box2d.coordPixelsToWorld(x,y));
   body = box2d.createBody(b);
   
+   body.createFixture(a,1);
+    
+    body.setUserData(this);
   }
   
   //Defining the fixture in order to attach our shape into the body
   void show() 
   {
+    Vec2 pos = box2d.getBodyPixelCoord(body);
+    
     fill(col);
     noStroke();
     rectMode(CENTER);
-    rect(x,y,w,h);
+     
+    pushMatrix();
+    translate(pos.x, pos.y);
+    rect(0,0,w,h);
+    popMatrix();
   }
 }
