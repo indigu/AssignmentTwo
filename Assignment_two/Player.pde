@@ -1,11 +1,9 @@
 class Player
 {
   Body player;
-  Body lowPlayer;
   
   float w;
   float h;
-  float r;
   
   color col;
   
@@ -18,6 +16,7 @@ class Player
     
     //created the player
     createPlayer(new Vec2(x_, y_), w, h);
+    player.setUserData(this);
   }
   
   void display() 
@@ -63,7 +62,20 @@ class Player
     fix1.restitution = .75;
     
     player.createFixture(fix1);
-    player.setUserData(this);
+    
+    
+    
+    Vec2 vel = player.getLinearVelocity();
+    
+    if (key == CODED)
+    {
+      if (key == LEFT)
+      {
+        vel.x = vel.x--;
+      }
+    }
+    
+    player.setLinearVelocity( vel );
   }
 }
   

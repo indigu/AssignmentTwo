@@ -13,8 +13,10 @@ float posY = 500;
 
 
 //A list we'll use to track fixed objects
+boolean[] keys = new boolean[1000];
 ArrayList<Boundary> blockage;
 Player one;
+
 void setup()
 {
   size(450, 600);
@@ -67,5 +69,3 @@ boolean checkKey(int k)
   }
   return false;
 }
-
-boolean[] keys = new boolean[1000];
