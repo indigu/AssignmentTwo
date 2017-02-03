@@ -60,7 +60,7 @@ class Player
     // Parameters that affect physics
     fix1.density = 1;
     fix1.friction = 0.3;
-    fix1.restitution = 0.5;
+    fix1.restitution = .75;
     
     player.createFixture(fix1);
     player.setUserData(this);

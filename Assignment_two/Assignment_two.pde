@@ -8,8 +8,8 @@ import org.jbox2d.dynamics.contacts.*;
 
 Box2DProcessing box2d;
 
-float posX = 0;
-float posY = 150;
+float posX = 225;
+float posY = 500;
 
 
 //A list we'll use to track fixed objects
@@ -32,7 +32,7 @@ void setup()
   blockage.add(new Boundary(0, height-5, width*2 ,10));
   blockage.add(new Boundary(5, height, 10 , height*6));
   blockage.add(new Boundary(width-5, height, 10 ,height*6));
-  one = new Player(width/2,height/2);
+  one = new Player(posX, posY);
 
 }
 
@@ -48,3 +48,24 @@ void draw()
 
     one.display();
 }
+
+void keyPressed()
+{ 
+  keys[keyCode] = true;
+}
+ 
+void keyReleased()
+{
+  keys[keyCode] = false; 
+}
+
+boolean checkKey(int k)
+{
+  if (keys.length >= k) 
+  {
+    return keys[k] || keys[Character.toUpperCase(k)];  
+  }
+  return false;
+}
+
+boolean[] keys = new boolean[1000];
