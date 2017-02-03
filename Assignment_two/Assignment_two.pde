@@ -9,6 +9,9 @@ import org.jbox2d.dynamics.contacts.*;
 Box2DProcessing box2d;
 
 Player one;
+float posX = 0;
+float posY = 250;
+
 
 //A list we'll use to track fixed objects
 ArrayList<Boundary> blockage;
@@ -16,6 +19,7 @@ ArrayList<Boundary> blockage;
 void setup()
 {
   size(450, 600);
+  background(0);
   smooth();
   
   box2d = new Box2DProcessing(this);
@@ -33,7 +37,7 @@ void setup()
 
 void draw()
 {
-  background(0);
+  box2d.step();
   
   for (Boundary wall: blockage) {
     wall.show();

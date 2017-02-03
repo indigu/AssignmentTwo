@@ -27,9 +27,6 @@ class Player
   {
     //Getting the player's position
     Vec2 pos = box2d.getBodyPixelCoord(player);
-
-    float posX = -1;
-    float posY = 250;
     
     rectMode(PConstants.CENTER);
     pushMatrix();
