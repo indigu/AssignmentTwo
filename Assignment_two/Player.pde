@@ -23,11 +23,11 @@ class Player
   {
     //Getting the player's position
     Vec2 pos = box2d.getBodyPixelCoord(player);
-    float a = player.getAngle();
+    //float a = player.getAngle();
     
     rectMode(CENTER);
     pushMatrix();
-    rotate(-a);
+    //rotate(-a);
     translate(pos.x, pos.y);
     fill(#FEFF34);
     stroke(0);
@@ -84,8 +84,8 @@ class Player
     fix1.shape = box;
     
     // Parameters that affect physics
-    fix1.density = 0.1;
-    fix1.friction = 1;
+    fix1.density = 1;
+    fix1.friction = 5;
     fix1.restitution = 0.2;
     
     player.createFixture(fix1);
