@@ -51,13 +51,18 @@ void draw()
   background(0);
   box2d.step();
   
-  for (Boundary wall: blockage) 
-  {
-    wall.show();
-  }
+  boolean startMenu = false;
   
-  one.display();
-  one.update();
+  if (startMenu == true)
+  {
+    for (Boundary wall: blockage) 
+    {
+      wall.show();
+    }
+  
+    one.display();
+    one.update();
+  }
 }
 
 
