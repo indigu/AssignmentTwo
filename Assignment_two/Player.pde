@@ -39,36 +39,43 @@ class Player
   {
     Vec2 vel = player.getLinearVelocity();
     
-    
     if (checkKey('a'))
     {
-        vel.x = -15;
+      vel.x = -15;
     }
     else if (checkKey('d'))
     {
       vel.x = 15;
     }
     
-    if (checkKey('a') && (checkKey('w')))
+    if (checkKey('a') && checkKey('w') && jumpTimer > 10 )
     {
+      jumpTimer ++;
       vel.x = -15;
       vel.y = 10;
     }
-    else if (checkKey('d') && (checkKey('w')))
+    else if (checkKey('d') && checkKey('w') && jumpTimer > 10)
     {
+      jumpTimer ++;
       vel.x = 15;
       vel.y = 10;
     }
     
-    if (checkKey('w'))
+    if (checkKey('w') && jumpTimer < 10)
     {
       vel.y = 10;
+      jumpTimer++;
     }
     
     if (checkKey('s'))
     {
      vel.y = -20;
      vel.x = 0;
+     
+     if(jumpTimer == 10)
+      {
+        jumpTimer --;
+      }
     }
       
       

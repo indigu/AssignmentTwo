@@ -10,7 +10,7 @@ Box2DProcessing box2d;
 
 float posX = 225;
 float posY = 500;
-
+int jumpTimer = 0;
 
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
