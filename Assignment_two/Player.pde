@@ -39,6 +39,7 @@ class Player
   {
     Vec2 vel = player.getLinearVelocity();
     
+    
     if (checkKey('a'))
     {
         vel.x = -15;
@@ -48,21 +49,29 @@ class Player
       vel.x = 15;
     }
     
-    if (checkKey('a') && checkKey(' '))
+    if (checkKey('a') && (checkKey('w')))
     {
       vel.x = -15;
       vel.y = 10;
     }
-    else if (checkKey('d') && (checkKey(' ')))
+    else if (checkKey('d') && (checkKey('w')))
     {
       vel.x = 15;
       vel.y = 10;
     }
     
-    if (checkKey(' '))
+    if (checkKey('w'))
     {
       vel.y = 10;
     }
+    
+    if (checkKey('s'))
+    {
+     vel.y = -20;
+     vel.x = 0;
+    }
+      
+      
     player.setLinearVelocity( vel );
   }
   
@@ -90,7 +99,7 @@ class Player
     // Parameters that affect physics
     fix1.density = 1;
     fix1.friction = 0.3;
-    fix1.restitution = .75;
+    fix1.restitution = 0;
     
     player.createFixture(fix1);
     
