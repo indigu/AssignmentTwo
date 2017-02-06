@@ -38,7 +38,12 @@ void setup()
   blockage.add(new Boundary(0, height-5, width*2 ,10));
   blockage.add(new Boundary(5, height, 10 , height*6));
   blockage.add(new Boundary(width-5, height, 10 ,height*6));
-  blockage.add(new Boundary(0, 550, 300, 10));
+  blockage.add(new Boundary(0, 540, 300, 10));
+  blockage.add(new Boundary(0, 480, 340, 10));
+  blockage.add(new Boundary(0, 420, 380, 10));
+  blockage.add(new Boundary(0, 360, 420, 10));
+  blockage.add(new Boundary(0, 300, 460, 10));
+  blockage.add(new Boundary(0, 240, 520, 10));
 }
 
 void draw()

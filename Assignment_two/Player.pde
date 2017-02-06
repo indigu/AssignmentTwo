@@ -27,7 +27,7 @@ class Player
     
     rectMode(CENTER);
     pushMatrix();
-    //rotate(-a);
+    //rotate(a);
     translate(pos.x, pos.y);
     fill(#FEFF34);
     stroke(0);
@@ -84,9 +84,9 @@ class Player
     fix1.shape = box;
     
     // Parameters that affect physics
-    fix1.density = 1;
+    fix1.density = 2;
     fix1.friction = 5;
-    fix1.restitution = 0.2;
+    fix1.restitution = 0.02;
     
     player.createFixture(fix1);
     
