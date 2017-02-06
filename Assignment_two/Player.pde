@@ -48,6 +48,21 @@ class Player
       vel.x = 15;
     }
     
+    if (checkKey('a') && checkKey(' '))
+    {
+      vel.x = -15;
+      vel.y = 10;
+    }
+    else if (checkKey('d') && (checkKey(' ')))
+    {
+      vel.x = 15;
+      vel.y = 10;
+    }
+    
+    if (checkKey(' '))
+    {
+      vel.y = 10;
+    }
     player.setLinearVelocity( vel );
   }
   
