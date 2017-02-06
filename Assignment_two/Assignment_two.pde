@@ -49,6 +49,7 @@ void draw()
   
 
     one.display();
+    one.update();
 }
 
 void keyPressed()
