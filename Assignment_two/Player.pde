@@ -34,9 +34,25 @@ class Player
     rect(0, 0, w, h);
     popMatrix();
   }
+
+  void update()
+  {
+    Vec2 vel = player.getLinearVelocity();
+    
+    if (checkKey('a'))
+    {
+        vel.x = -15;
+    }
+    else if (checkKey('d'))
+    {
+      vel.x = 15;
+    }
+    
+    player.setLinearVelocity( vel );
+  }
   
   //After many trials, I decided to create a different function and call it
-  //to the constructor later
+//to the constructor later
   void createPlayer(Vec2 center, float w_, float h_) 
   {
     
@@ -63,19 +79,6 @@ class Player
     
     player.createFixture(fix1);
     
-    
-    
-    Vec2 vel = player.getLinearVelocity();
-    
-    if (key == CODED)
-    {
-      if (key == LEFT)
-      {
-        vel.x = vel.x--;
-      }
-    }
-    
-    player.setLinearVelocity( vel );
   }
 }
   
