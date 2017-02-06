@@ -8,9 +8,9 @@ import org.jbox2d.dynamics.contacts.*;
 
 Box2DProcessing box2d;
 
+float timeDelta = 1.0f/60.0f;
 float posX = 225;
 float posY = 500;
-int jumpTimer = 0;
 
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
@@ -27,30 +27,62 @@ void setup()
   box2d.createWorld();
   
   box2d.setGravity(0, -10);
+  
+  box2d.listenForCollisions();
 
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
   
+  one = new Player(posX, posY);
+  
   blockage.add(new Boundary(0, height-5, width*2 ,10));
   blockage.add(new Boundary(5, height, 10 , height*6));
   blockage.add(new Boundary(width-5, height, 10 ,height*6));
-  one = new Player(posX, posY);
-
+  blockage.add(new Boundary(0, 550, 300, 10));
 }
 
 void draw()
 {
-  box2d.step();
   background(0);
+  box2d.step();
   
-  for (Boundary wall: blockage) {
+  for (Boundary wall: blockage) 
+  {
     wall.show();
   }
   
-
-    one.display();
-    one.update();
+  one.display();
+  one.update();
 }
+
+
+void beginContact(Contact cp) 
+{
+  Fixture f1 = cp.getFixtureA();
+  Fixture f2 = cp.getFixtureB();
+  
+  Body b1 = f1.getBody();
+  Body b2 = f2.getBody();
+
+  Object o1 = b1.getUserData();
+  Object o2 = b2.getUserData();
+  
+  if (o1.getClass() == Player.class && o2.getClass() == Boundary.class) 
+  {
+     Player p1 = (Player) o1;
+     p1.jumpReset = true;
+  }
+  else if (o1.getClass() == Boundary.class && o2.getClass() == Player.class) 
+  {
+    Player p1 = (Player) o2;
+    p1.jumpReset = true;
+  }
+}
+
+void endContact(Contact cp) 
+{
+}
+
 
 void keyPressed()
 { 

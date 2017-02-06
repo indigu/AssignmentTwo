@@ -4,7 +4,7 @@ class Player
   
   float w;
   float h;
-  
+  boolean jumpReset = true;
   color col;
   
   //Constructor
@@ -48,41 +48,17 @@ class Player
       vel.x = 15;
     }
     
-    if (checkKey('a') && checkKey('w') && jumpTimer > 20 )
-    {
-      jumpTimer ++;
-      vel.x = -15;
-      vel.y = 10;
-    }
-    else if (checkKey('d') && checkKey('w') && jumpTimer > 20)
-    {
-      jumpTimer ++;
-      vel.x = 15;
-      vel.y = 10;
-    }
-    
-    if (checkKey('w') && jumpTimer < 20)
+    if (checkKey('w') && jumpReset)
     {
       vel.y = 10;
-      jumpTimer++;
+      jumpReset = false;
     }
     
     if (checkKey('s'))
     {
-     vel.y = -20;
-     vel.x = 0;
-     
-     if(jumpTimer == 20)
-      {
-        jumpTimer--;
-      }
+      vel.y = -20;
     }
-     
-   if (vel.y == 0)
-   {
-     jumpTimer = 0;
-   }
-      
+   
     player.setLinearVelocity( vel );
   }
   
@@ -108,8 +84,8 @@ class Player
     fix1.shape = box;
     
     // Parameters that affect physics
-    fix1.density = 1;
-    fix1.friction = 2.5;
+    fix1.density = 0.1;
+    fix1.friction = 1;
     fix1.restitution = 0.2;
     
     player.createFixture(fix1);
