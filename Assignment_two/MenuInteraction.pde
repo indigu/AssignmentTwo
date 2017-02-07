@@ -13,5 +13,7 @@ class Menu extends Player
     {
       vel.y = 10;
     }
+    
+    player.setLinearVelocity( vel );
   }
 }

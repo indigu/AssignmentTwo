@@ -14,6 +14,7 @@ float posX = 225;
 float posY = 500;
 int text1 = -300;
 int text2 = -400;
+boolean startMenu = false;
 
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
@@ -41,9 +42,9 @@ void setup()
   men = new ArrayList<Menu>();
   one = new Player(posX, posY);
   
-  for(int i = 0; i < 10; i++)
+  for(int i = 0; i < 15; i++)
   {
-    men.add(new Menu(225, 100));
+    men.add(new Menu(random(50,400), random(10, 500)));
   }
   
   //Stage One
@@ -63,7 +64,6 @@ void draw()
   background(0);
   box2d.step();
   
-  boolean startMenu = false;
   if (startMenu == true)
   {
     for (Boundary wall: blockage) 
@@ -80,6 +80,7 @@ void draw()
     {
       fill(random(0,255), random(0,255), random(0,255));
       box.display();
+      box.menuUpdate();
     }
     fill(255);
     menuText();
