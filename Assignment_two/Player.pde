@@ -5,7 +5,6 @@ class Player
   float w;
   float h;
   boolean jumpReset = true;
-  color col;
   
   //Constructor
   Player(float x_, float y_)
@@ -29,7 +28,7 @@ class Player
     pushMatrix();
     //rotate(a);
     translate(pos.x, pos.y);
-    fill(#FEFF34);
+    fill(random(0,255), random(0,255), random(0,255));
     stroke(0);
     rect(0, 0, w, h);
     popMatrix();

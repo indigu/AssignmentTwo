@@ -18,8 +18,8 @@ int text2 = -400;
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
 ArrayList<Boundary> blockage;
+ArrayList<Menu> men;
 Player one;
-Menu men;
 
 void setup()
 {
@@ -38,10 +38,15 @@ void setup()
 
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
-  
+  men = new ArrayList<Menu>();
   one = new Player(posX, posY);
-  men = new Menu(300, 400);
   
+  for(int i = 0; i < 10; i++)
+  {
+    men.add(new Menu(225, 100));
+  }
+  
+  //Stage One
   blockage.add(new Boundary(0, height-5, width*2 ,10));
   blockage.add(new Boundary(5, height, 10 , height*6));
   blockage.add(new Boundary(width-5, height, 10 ,height*6));
@@ -71,10 +76,14 @@ void draw()
   }
   else
   {
+    for (Menu box: men) 
+    {
+      fill(random(0,255), random(0,255), random(0,255));
+      box.display();
+    }
+    fill(255);
     menuText();
     updateText();
-    men.display();
-    men.menuUpdate();
   }
 }
 
