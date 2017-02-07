@@ -1,18 +1,6 @@
 int text1 = -300;
 int text2 = -400;
-
-float bx;
-float by;
-int SizeY = 50;
-int SizeX = 80;
-boolean overBox = false;
-boolean locked = false;
-float xOffset = 0.0; 
-float yOffset = 0.0; 
-
-
-
-
+int text3 = -300;
 
 class Menu extends Player
 {
@@ -33,26 +21,14 @@ class Menu extends Player
     player.setLinearVelocity( vel );
   }
   
-  void killBody() {
-    box2d.destroyBody(player);
-  }
-
-  // Is the particle ready for deletion?
-  boolean done() {
-
-    if (gameState == 1) 
-    {
-      killBody();
-      return true;
-    }
-    return false;
-  }
 }
 
-
-
-
-
+void menu()
+{
+  menuText();
+  updateText();
+  updateGame();
+}
 
 void menuText()
 {
@@ -61,6 +37,9 @@ void menuText()
   
   textSize(16);
   text("Created by Ogaco Games", text2, 160);
+  
+  textSize(22);
+  text("Press SPACE to start!", text3, 220);
 }
 
 void updateText()
@@ -74,37 +53,17 @@ void updateText()
   {
     text2 = text2 + 5; 
   }
-}
-
-void boxDisplay()
-{
-  rect(bx, by, SizeX, SizeY);
-}
-
-void mousePressed()
-{
-  if (mouseX > bx-SizeX && mouseX < bx+SizeX && 
-      mouseY > by-SizeY && mouseY < by+SizeY) {
-    overBox = true;  
-    if(!locked) { 
-      stroke(255); 
-      fill(255);
-      gameState = 1;
-    } 
-  } else {
-    stroke(153);
-    fill(100);
-    overBox = false;
+  
+  if(text3 < 110)
+  {
+    text3 = text3 + 3;
   }
 }
 
-void mouseDragged() {
-  if(locked) {
-    bx = mouseX-xOffset; 
-    by = mouseY-yOffset; 
+void updateGame()
+{
+  if((gameState == 0) && (checkKey(' ')))
+  {
+    gameState = 1;
   }
-}
-
-void mouseReleased() {
-  locked = false;
 }

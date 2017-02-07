@@ -40,11 +40,7 @@ void setup()
   one = new Player(posX, posY);
   
   if(gameState == 0)
-  {
-    bx = width/2;
-    by = 220;
-    rectMode(RADIUS);
-    
+  { 
     men = new ArrayList<Menu>();
     
     blockage.add(new Boundary(0, height-5, width*2 ,1));
@@ -55,21 +51,14 @@ void setup()
     {
       men.add(new Menu(random(50,400), random(10, 500)));
     }
-    
-    for (int i = men.size()-1; i >= 0; i--) 
-    {
-    Menu b = men.get(i);
-      if (b.done()) 
-      {
-        men.remove(i);
-      }
-     }
-     
   }
   
   //Stage One
   if(gameState == 1)
   {
+    
+    //one = new Player(posX, posY);
+    
     blockage.add(new Boundary(0, height-5, width*2 ,10));
     blockage.add(new Boundary(5, height, 10 , height*6));
     blockage.add(new Boundary(width-5, height, 10 ,height*6));
@@ -96,14 +85,11 @@ void draw()
       box.menuUpdate();
     }
     fill(255);
-    menuText();
-    updateText();
-    boxDisplay();
+    menu();
   }
   
   if (gameState == 1)
   {
-    box2d.step();
     for (Boundary wall: blockage) 
     {
       wall.show();
