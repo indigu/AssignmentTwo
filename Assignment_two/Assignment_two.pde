@@ -12,8 +12,6 @@ PFont font;
 float timeDelta = 1.0f/60.0f;
 float posX = 225;
 float posY = 500;
-int text1 = -300;
-int text2 = -400;
 int gameState = 0;
 
 //A list we'll use to track fixed objects
@@ -39,22 +37,34 @@ void setup()
 
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
-  men = new ArrayList<Menu>();
   one = new Player(posX, posY);
-  
-  for(int i = 0; i < 15; i++)
-  {
-    men.add(new Menu(random(50,400), random(10, 500)));
-  }
   
   if(gameState == 0)
   {
-    blockage.add(new Boundary(0, height-5, width*2 ,10));
+    bx = width/2;
+    by = 220;
+    rectMode(RADIUS);
     
-    for(int i = 0; i < 15; i++)
+    men = new ArrayList<Menu>();
+    
+    blockage.add(new Boundary(0, height-5, width*2 ,1));
+    blockage.add(new Boundary(5, height, 1 , height*6));
+    blockage.add(new Boundary(width-5, height, 1 ,height*6));
+    
+    for(int i = 0; i < 300; i++)
     {
       men.add(new Menu(random(50,400), random(10, 500)));
     }
+    
+    for (int i = men.size()-1; i >= 0; i--) 
+    {
+    Menu b = men.get(i);
+      if (b.done()) 
+      {
+        men.remove(i);
+      }
+     }
+     
   }
   
   //Stage One
@@ -77,18 +87,6 @@ void draw()
   background(0);
   box2d.step();
   
-  if (gameState == 1)
-  {
-    box2d.step();
-    for (Boundary wall: blockage) 
-    {
-      wall.show();
-    }
-  
-    one.display();
-    one.update();
-  }
-  
   if (gameState == 0)
   {
     for (Menu box: men) 
@@ -100,6 +98,19 @@ void draw()
     fill(255);
     menuText();
     updateText();
+    boxDisplay();
+  }
+  
+  if (gameState == 1)
+  {
+    box2d.step();
+    for (Boundary wall: blockage) 
+    {
+      wall.show();
+    }
+  
+    one.display();
+    one.update();
   }
 }
 
@@ -129,28 +140,6 @@ void beginContact(Contact cp)
 
 void endContact(Contact cp) 
 {
-}
-
-void menuText()
-{
-  textSize(22);
-  text("Your Typical Platformer Game", text1, 200);
-  
-  textSize(16);
-  text("Created by Ogaco Games", text2, 260);
-}
-
-void updateText()
-{
-  if(text1 < 65)
-  {
-    text1 = text1 + 3; 
-  }
-  
-  if(text2 < 125)
-  {
-    text2 = text2 + 5; 
-  }
 }
 
 void keyPressed()
