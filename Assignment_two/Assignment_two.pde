@@ -9,10 +9,11 @@ import org.jbox2d.dynamics.contacts.*;
 Box2DProcessing box2d;
 PFont font;
 
-
 float timeDelta = 1.0f/60.0f;
 float posX = 225;
 float posY = 500;
+int text1 = -300;
+int text2 = -400;
 
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
@@ -25,7 +26,7 @@ void setup()
   background(0);
   smooth();
   
-  font = loadFont("KristenITC-Regular-45.vlw");
+  font = loadFont("LucidaHandwriting-Italic-48.vlw");
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
@@ -56,7 +57,6 @@ void draw()
   box2d.step();
   
   boolean startMenu = false;
-  
   if (startMenu == true)
   {
     for (Boundary wall: blockage) 
@@ -66,6 +66,11 @@ void draw()
   
     one.display();
     one.update();
+  }
+  else
+  {
+    menuText();
+    updateText();
   }
 }
 
@@ -97,6 +102,27 @@ void endContact(Contact cp)
 {
 }
 
+void menuText()
+{
+  textSize(22);
+  text("Your Typical Platformer Game", text1, 200);
+  
+  textSize(16);
+  text("Created by Ogaco Games", text2, 260);
+}
+
+void updateText()
+{
+  if(text1 < 65)
+  {
+    text1 = text1 + 3; 
+  }
+  
+  if(text2 < 120)
+  {
+    text2 = text2 + 5; 
+  }
+}
 
 void keyPressed()
 { 
