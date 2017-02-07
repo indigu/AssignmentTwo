@@ -14,10 +14,12 @@ float posX = 225;
 float posY = 500;
 int gameState = 0;
 
-//A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
+
 ArrayList<Boundary> blockage;
 ArrayList<Menu> men;
+ArrayList<Obstacle> obstacle;
+
 Player one;
 
 void setup()
@@ -109,7 +111,7 @@ void draw()
     {
       wall.show();
     }
- 
+    
     one.display();
     one.update();
   }

@@ -1,7 +1,6 @@
 class Player
 {
   Body player;
-  Body obstacle;
   
   float w;
   float h;
@@ -17,14 +16,6 @@ class Player
     //created the player
     createPlayer(new Vec2(x_, y_), w, h);
     player.setUserData(this);
-  }
-  
-  Obstacles(float x, float y)
-  {
-    w = random(5, 20);
-    h = random(5, 20);
-    
-    createObstacle(new Vec2(x, y), w, h);
   }
   
   void display() 
