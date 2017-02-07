@@ -19,6 +19,7 @@ int text2 = -400;
 boolean[] keys = new boolean[1000];
 ArrayList<Boundary> blockage;
 Player one;
+Menu men;
 
 void setup()
 {
@@ -26,7 +27,7 @@ void setup()
   background(0);
   smooth();
   
-  font = loadFont("LucidaHandwriting-Italic-48.vlw");
+  font = loadFont("Power_Clear_Bold-48.vlw");
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
@@ -39,6 +40,7 @@ void setup()
   blockage = new ArrayList<Boundary>();
   
   one = new Player(posX, posY);
+  men = new Menu(300, 400);
   
   blockage.add(new Boundary(0, height-5, width*2 ,10));
   blockage.add(new Boundary(5, height, 10 , height*6));
@@ -71,6 +73,8 @@ void draw()
   {
     menuText();
     updateText();
+    men.display();
+    men.menuUpdate();
   }
 }
 
@@ -118,7 +122,7 @@ void updateText()
     text1 = text1 + 3; 
   }
   
-  if(text2 < 120)
+  if(text2 < 125)
   {
     text2 = text2 + 5; 
   }
