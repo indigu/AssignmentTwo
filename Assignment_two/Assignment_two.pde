@@ -53,6 +53,8 @@ void setup()
   //Stage One
   if(gameState == 0)
   {    
+    obstacle = new ArrayList<Obstacle>();
+    
     blockage.add(new Boundary(0, height-5, width*2 ,10));
     blockage.add(new Boundary(5, height, 10 , height*6));
     blockage.add(new Boundary(width-5, height, 10 ,height*6));
