@@ -7,6 +7,8 @@ import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.*;
 
 Box2DProcessing box2d;
+PFont font;
+
 
 float timeDelta = 1.0f/60.0f;
 float posX = 225;
@@ -22,6 +24,8 @@ void setup()
   size(450, 600);
   background(0);
   smooth();
+  
+  font = loadFont("KristenITC-Regular-45.vlw");
   
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
