@@ -114,6 +114,15 @@ void draw()
       wall.show();
     }
     
+   if (random(1) < 0.2) 
+   {
+    Obstacle a = new Obstacle(360,100);
+    obstacle.add(a);
+   }
+    
+   for (Obstacle a: obstacle) {
+    a.display();
+  } 
     one.display();
     one.update();
   }

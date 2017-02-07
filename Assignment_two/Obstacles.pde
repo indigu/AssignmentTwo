@@ -36,4 +36,33 @@ class Obstacle
     obstacle.setLinearVelocity(new Vec2(random(-5, 5), random(2, 5)));
     obstacle.setAngularVelocity(random(-5, 5));
   }
+  
+  void display() {
+    // We look at each body and get its screen position
+    Vec2 pos = box2d.getBodyPixelCoord(obstacle);
+    // Get its angle of rotation
+    float a = obstacle.getAngle();
+
+    rectMode(CENTER);
+    pushMatrix();
+    translate(pos.x, pos.y);
+    rotate(-a);
+    fill(#FC190D);
+    stroke(0);
+    rect(0, 0, w, h);
+    popMatrix();
+  }
+  
+  void killBody() {
+    box2d.destroyBody(obstacle);
+  }
+  boolean done() {
+    Vec2 pos = box2d.getBodyPixelCoord(obstacle);
+    if (pos.y > height-19) 
+    {
+      killBody();
+      return true;
+    }
+    return false;
+  }
 }
