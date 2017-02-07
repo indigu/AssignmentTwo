@@ -65,6 +65,5 @@ void updateGame()
   if((gameState == 0) && (checkKey(' ')))
   {
     gameState = 1;
-    //box2d = null;
   }
 }

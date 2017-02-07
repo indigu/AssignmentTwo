@@ -26,17 +26,16 @@ void setup()
   background(0);
   smooth();
   
+  makeWorld();
+  
   font = loadFont("Power_Clear_Bold-48.vlw");
   
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
   one = new Player(posX, posY);
   
-  if(gameState == 0)
+  if(gameState == 1)
   { 
-    makeWorld();
-    
-    
     men = new ArrayList<Menu>();
     
     blockage.add(new Boundary(0, height-5, width*2 ,1));
@@ -50,11 +49,8 @@ void setup()
   }
   
   //Stage One
-  if(gameState == 1)
-  {
-    
-    //one = new Player(posX, posY);
-    
+  if(gameState == 0)
+  {    
     blockage.add(new Boundary(0, height-5, width*2 ,10));
     blockage.add(new Boundary(5, height, 10 , height*6));
     blockage.add(new Boundary(width-5, height, 10 ,height*6));
@@ -72,7 +68,9 @@ void draw()
   background(0);
   box2d.step();
   
-  if (gameState == 0)
+ 
+  /*
+  if (gameState == 1)
   {
     for (Menu box: men) 
     {
@@ -80,17 +78,38 @@ void draw()
       box.display();
       box.menuUpdate();
     }
+   
+    for (int i = 0; i < 150; i++) 
+    { 
+      Menu b = men.get(i);
+      if(b.done())
+      {
+        men.remove(i);
+      }
+    }
+    
     fill(255);
     menu();
   }
+  */
   
-  if (gameState == 1)
+  if (gameState == 0)
   {
+    /*
+    for (int i = 0; i < 150; i++) 
+    { 
+      Menu b = men.get(i);
+      if(b.done())
+      {
+        men.remove(i);
+      }
+    */
+    
     for (Boundary wall: blockage) 
     {
       wall.show();
     }
-  
+ 
     one.display();
     one.update();
   }
@@ -147,9 +166,4 @@ void makeWorld()
 {
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
-}
-
-void endWorld()
-{
-  box2d = null;
 }

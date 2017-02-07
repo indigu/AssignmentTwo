@@ -28,7 +28,7 @@ class Player
     pushMatrix();
     //rotate(a);
     translate(pos.x, pos.y);
-    fill(random(0,255), random(0,255), random(0,255));
+    fill(255);
     stroke(0);
     rect(0, 0, w, h);
     popMatrix();
@@ -56,6 +56,7 @@ class Player
     if (checkKey('s'))
     {
       vel.y = -20;
+      jumpReset = true;
     }
    
     player.setLinearVelocity( vel );
@@ -88,6 +89,18 @@ class Player
     fix1.restitution = 0.02;
     
     player.createFixture(fix1);
+  }
+  
+  void killBody() {
+    box2d.destroyBody(player);
+  }
+  
+  boolean done() {
+    if (gameState == 1) {
+      killBody();
+      return true;
+    }
+    return false;
   }
 }
   
