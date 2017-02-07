@@ -18,6 +18,14 @@ class Player
     player.setUserData(this);
   }
   
+  Obstacles(float x, float y)
+  {
+    w = random(5, 20);
+    h = random(5, 20);
+    
+    createObstacle(new Vec2(x, y), w, h);
+  }
+  
   void display() 
   {
     //Getting the player's position
