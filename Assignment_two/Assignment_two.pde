@@ -28,19 +28,15 @@ void setup()
   
   font = loadFont("Power_Clear_Bold-48.vlw");
   
-  box2d = new Box2DProcessing(this);
-  box2d.createWorld();
-  
-  box2d.setGravity(0, -10);
-  
-  box2d.listenForCollisions();
-
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
   one = new Player(posX, posY);
   
   if(gameState == 0)
   { 
+    makeWorld();
+    
+    
     men = new ArrayList<Menu>();
     
     blockage.add(new Boundary(0, height-5, width*2 ,1));
@@ -145,4 +141,15 @@ boolean checkKey(int k)
     return keys[k] || keys[Character.toUpperCase(k)];  
   }
   return false;
+}
+
+void makeWorld()
+{
+  box2d = new Box2DProcessing(this);
+  box2d.createWorld();
+}
+
+void endWorld()
+{
+  box2d = null;
 }

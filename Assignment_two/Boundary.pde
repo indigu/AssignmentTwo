@@ -51,9 +51,4 @@ class Boundary {
     rect(0,0,w,h);
     popMatrix();
   }
-  
-  void killBody()
-  {
-    box2d.destroyBody(body);
-  }
 }

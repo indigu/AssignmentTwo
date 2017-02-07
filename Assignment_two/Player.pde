@@ -88,7 +88,6 @@ class Player
     fix1.restitution = 0.02;
     
     player.createFixture(fix1);
-    
   }
 }
   
