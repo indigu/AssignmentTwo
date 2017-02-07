@@ -14,7 +14,7 @@ float posX = 225;
 float posY = 500;
 int text1 = -300;
 int text2 = -400;
-boolean startMenu = false;
+int gameState = 0;
 
 //A list we'll use to track fixed objects
 boolean[] keys = new boolean[1000];
@@ -47,16 +47,29 @@ void setup()
     men.add(new Menu(random(50,400), random(10, 500)));
   }
   
+  if(gameState == 0)
+  {
+    blockage.add(new Boundary(0, height-5, width*2 ,10));
+    
+    for(int i = 0; i < 15; i++)
+    {
+      men.add(new Menu(random(50,400), random(10, 500)));
+    }
+  }
+  
   //Stage One
-  blockage.add(new Boundary(0, height-5, width*2 ,10));
-  blockage.add(new Boundary(5, height, 10 , height*6));
-  blockage.add(new Boundary(width-5, height, 10 ,height*6));
-  blockage.add(new Boundary(0, 540, 300, 10));
-  blockage.add(new Boundary(0, 480, 340, 10));
-  blockage.add(new Boundary(0, 420, 380, 10));
-  blockage.add(new Boundary(0, 360, 420, 10));
-  blockage.add(new Boundary(0, 300, 460, 10));
-  blockage.add(new Boundary(0, 240, 520, 10));
+  if(gameState == 1)
+  {
+    blockage.add(new Boundary(0, height-5, width*2 ,10));
+    blockage.add(new Boundary(5, height, 10 , height*6));
+    blockage.add(new Boundary(width-5, height, 10 ,height*6));
+    blockage.add(new Boundary(0, 540, 300, 10));
+    blockage.add(new Boundary(0, 480, 340, 10));
+    blockage.add(new Boundary(0, 420, 380, 10));
+    blockage.add(new Boundary(0, 360, 420, 10));
+    blockage.add(new Boundary(0, 300, 460, 10));
+    blockage.add(new Boundary(0, 240, 520, 10));
+  }
 }
 
 void draw()
@@ -64,8 +77,9 @@ void draw()
   background(0);
   box2d.step();
   
-  if (startMenu == true)
+  if (gameState == 1)
   {
+    box2d.step();
     for (Boundary wall: blockage) 
     {
       wall.show();
@@ -74,7 +88,8 @@ void draw()
     one.display();
     one.update();
   }
-  else
+  
+  if (gameState == 0)
   {
     for (Menu box: men) 
     {
