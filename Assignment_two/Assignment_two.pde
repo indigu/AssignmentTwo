@@ -5,6 +5,11 @@ import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.*;
+import ddf.minim.*;
+
+Minim minim;
+AudioPlayer soundOne;
+
 
 Box2DProcessing box2d;
 
@@ -28,6 +33,9 @@ void setup()
   size(450, 600);
   background(0);
   smooth();
+  
+  minim = new Minim(this);
+  soundOne = minim.loadFile("jump.mp3");
   
   makeWorld();
   
