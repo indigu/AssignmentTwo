@@ -42,7 +42,7 @@ void setup()
   makeWorld();
   box2d1 = new Box2DProcessing(this);
   box2d1.createWorld();
-  
+  box2d1.listenForCollisions();
   font = loadFont("Power_Clear_Bold-48.vlw");
   
   //Created the player into the world
@@ -143,15 +143,15 @@ void beginContact(Contact cp)
   Object o1 = b1.getUserData();
   Object o2 = b2.getUserData();
   
-  if (o1.getClass() == Player.class ) 
+  if (o1.getClass() == Player.class) 
   {
-     Obstacle p1 = (Obstacle) o1;
-     //p1.jumpReset = true;
+     Obstacle p1 = (Obstacle) o2;
+     p1.colorChange();
   }
-  else if (o1.getClass() == Boundary.class && o2.getClass() == Player.class) 
+  else if (o2.getClass() == Player.class) 
   {
-    Player p1 = (Player) o2;
-    p1.jumpReset = true;
+    Obstacle p1 = (Obstacle) o1;
+    p1.colorChange();
   }
 }
 
