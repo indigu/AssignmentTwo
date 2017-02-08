@@ -81,8 +81,6 @@ void draw()
   background(0);
   box2d.step();
   
- 
-  
   if (gameState == 0)
   {
     for (Menu box: men) 
