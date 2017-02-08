@@ -4,6 +4,8 @@ class Obstacle
   float w;
   float h;
   
+  color col;
+  
   Obstacle(float x, float y)
   {
     this.w = random(5, 20);
@@ -11,6 +13,7 @@ class Obstacle
 
     createObstacle(new Vec2(x, y), w, h);
     obstacle.setUserData(this);
+    col = color(#FC190D);
   }
   
   void createObstacle(Vec2 center, float w_, float h_) {
@@ -47,7 +50,7 @@ class Obstacle
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(-a);
-    fill(#FC190D);
+    fill(col);
     stroke(0);
     rect(0, 0, w, h);
     popMatrix();
@@ -64,5 +67,10 @@ class Obstacle
       return true;
     }
     return false;
+  }
+  
+  void colorChange()
+  {
+    col = color(0, 255, 0);
   }
 }

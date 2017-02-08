@@ -74,6 +74,8 @@ void setup()
     blockage.add(new Boundary(0, 360, 420, 10));
     blockage.add(new Boundary(0, 300, 460, 10));
     blockage.add(new Boundary(0, 240, 520, 10));
+    blockage.add(new Boundary(0, 180, 580, 10));
+    blockage.add(new Boundary(0, 100, 640, 10));
   
 }
 
@@ -141,10 +143,10 @@ void beginContact(Contact cp)
   Object o1 = b1.getUserData();
   Object o2 = b2.getUserData();
   
-  if (o1.getClass() == Player.class && o2.getClass() == Boundary.class) 
+  if (o1.getClass() == Player.class ) 
   {
-     Player p1 = (Player) o1;
-     p1.jumpReset = true;
+     Obstacle p1 = (Obstacle) o1;
+     //p1.jumpReset = true;
   }
   else if (o1.getClass() == Boundary.class && o2.getClass() == Player.class) 
   {

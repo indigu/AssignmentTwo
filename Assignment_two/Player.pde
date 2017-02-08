@@ -100,6 +100,13 @@ class Player
     text("Well done! You've reached the top of the wooooorld!", 60, 20);
   }
   
+  void motivationText()
+  {
+    textSize(14);
+    fill(255);
+    text("You gotta come up here to win!", 120, 80);
+  }
+  
   boolean done() {
     Vec2 pos = box2d1.getBodyPixelCoord(player);
     if (pos.y < 100) 
@@ -107,7 +114,11 @@ class Player
       successText();
       return true;
     }
-    return false;
+    else
+    {
+      motivationText();
+      return false;
+    }
   }
 }
   
