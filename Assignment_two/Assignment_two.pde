@@ -123,6 +123,13 @@ void draw()
    for (Obstacle a: obstacle) {
     a.display();
   } 
+  
+  for (int i = obstacle.size()-1; i >= 0; i--) {
+    Obstacle a = obstacle.get(i);
+    if (a.done()) {
+      obstacle.remove(i);
+    }
+  }
     one.display();
     one.update();
   }
