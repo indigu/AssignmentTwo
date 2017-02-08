@@ -16,8 +16,8 @@ class Obstacle
   void createObstacle(Vec2 center, float w_, float h_) {
 
     PolygonShape obs = new PolygonShape();
-    float box2dW = box2d.scalarPixelsToWorld(w_/2);
-    float box2dH = box2d.scalarPixelsToWorld(h_/2);
+    float box2dW = box2d1.scalarPixelsToWorld(w_/2);
+    float box2dH = box2d1.scalarPixelsToWorld(h_/2);
     obs.setAsBox(box2dW, box2dH);
 
     FixtureDef fd = new FixtureDef();
@@ -28,9 +28,9 @@ class Obstacle
 
     BodyDef bd = new BodyDef();
     bd.type = BodyType.DYNAMIC;
-    bd.position.set(box2d.coordPixelsToWorld(center));
+    bd.position.set(box2d1.coordPixelsToWorld(center));
 
-    obstacle = box2d.createBody(bd);
+    obstacle = box2d1.createBody(bd);
     obstacle.createFixture(fd);
 
     obstacle.setLinearVelocity(new Vec2(random(-5, 5), random(2, 5)));
@@ -39,7 +39,7 @@ class Obstacle
   
   void display() {
     // We look at each body and get its screen position
-    Vec2 pos = box2d.getBodyPixelCoord(obstacle);
+    Vec2 pos = box2d1.getBodyPixelCoord(obstacle);
     // Get its angle of rotation
     float a = obstacle.getAngle();
 
@@ -54,10 +54,10 @@ class Obstacle
   }
   
   void killBody() {
-    box2d.destroyBody(obstacle);
+    box2d1.destroyBody(obstacle);
   }
   boolean done() {
-    Vec2 pos = box2d.getBodyPixelCoord(obstacle);
+    Vec2 pos = box2d1.getBodyPixelCoord(obstacle);
     if (pos.y > height-20) 
     {
       killBody();

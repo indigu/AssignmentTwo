@@ -21,7 +21,7 @@ class Player
   void display() 
   {
     //Getting the player's position
-    Vec2 pos = box2d.getBodyPixelCoord(player);
+    Vec2 pos = box2d1.getBodyPixelCoord(player);
     //float a = player.getAngle();
     
     rectMode(CENTER);
@@ -51,11 +51,13 @@ class Player
     {
       vel.y = 10;
       jumpReset = false;
+      soundOne.rewind();
+      soundOne.play();
     }
     
     if (checkKey('s'))
     {
-      vel.y = -20;
+      vel.y = -10;
       jumpReset = true;
     }
    
@@ -69,15 +71,15 @@ class Player
     
     //Definining my player, I made it a box to make it easier for myself    
     PolygonShape box = new PolygonShape();
-    float box2dW = box2d.scalarPixelsToWorld(w_/2);
-    float box2dH = box2d.scalarPixelsToWorld(h_/2);
+    float box2dW = box2d1.scalarPixelsToWorld(w_/2);
+    float box2dH = box2d1.scalarPixelsToWorld(h_/2);
     box.setAsBox(box2dW, box2dH);
     
     // Define and create the body
     BodyDef play = new BodyDef();
     play.type = BodyType.DYNAMIC;
     play.position.set(box2d.coordPixelsToWorld(center));
-    player = box2d.createBody(play);
+    player = box2d1.createBody(play);
     
     // Defining fixture
     FixtureDef fix1 = new FixtureDef();
@@ -92,7 +94,7 @@ class Player
   }
   
   void killBody() {
-    box2d.destroyBody(player);
+    box2d1.destroyBody(player);
   }
   
   boolean done() {

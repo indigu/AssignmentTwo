@@ -22,16 +22,16 @@ class Boundary {
     //Defining our shape
     PolygonShape a = new PolygonShape();
   
-    float box2dW = box2d.scalarPixelsToWorld(w/2);
-    float box2dH = box2d.scalarPixelsToWorld(h/2);
+    float box2dW = box2d1.scalarPixelsToWorld(w/2);
+    float box2dH = box2d1.scalarPixelsToWorld(h/2);
   
     a.setAsBox(box2dW, box2dH);
   
     //Defining the body to go for the shape
     BodyDef b = new BodyDef();
     b.type = BodyType.STATIC;
-    b.position.set(box2d.coordPixelsToWorld(x,y));
-    body = box2d.createBody(b);
+    b.position.set(box2d1.coordPixelsToWorld(x,y));
+    body = box2d1.createBody(b);
     body.createFixture(a,1);
     
     body.setUserData(this);
@@ -40,7 +40,7 @@ class Boundary {
   //Defining the fixture in order to attach our shape into the body
   void show() 
   {
-    Vec2 pos = box2d.getBodyPixelCoord(body);
+    Vec2 pos = box2d1.getBodyPixelCoord(body);
     
     fill(col);
     noStroke();

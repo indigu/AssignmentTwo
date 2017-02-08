@@ -12,6 +12,7 @@ AudioPlayer soundOne;
 
 
 Box2DProcessing box2d;
+Box2DProcessing box2d1;
 
 PFont font;
 
@@ -38,32 +39,28 @@ void setup()
   soundOne = minim.loadFile("jump.mp3");
   
   makeWorld();
+  box2d1 = new Box2DProcessing(this);
+  box2d1.createWorld();
   
   font = loadFont("Power_Clear_Bold-48.vlw");
   
   //Created the player into the world
   blockage = new ArrayList<Boundary>();
   one = new Player(posX, posY);
+  obstacle = new ArrayList<Obstacle>();
   
   if(gameState == 0)
   { 
+    /*
     men = new ArrayList<Menu>();
-    
-    blockage.add(new Boundary(0, height-5, width*2 ,1));
-    blockage.add(new Boundary(5, height, 1 , height*6));
-    blockage.add(new Boundary(width-5, height, 1 ,height*6));
     
     for(int i = 0; i < 300; i++)
     {
       men.add(new Menu(random(50,400), random(10, 500)));
     }
+    */
   }
   
-  //Stage One
-  if(gameState == 1)
-  {    
-    obstacle = new ArrayList<Obstacle>();
-    
     blockage.add(new Boundary(0, height-5, width*2 ,10));
     blockage.add(new Boundary(5, height, 10 , height*6));
     blockage.add(new Boundary(width-5, height, 10 ,height*6));
@@ -73,32 +70,25 @@ void setup()
     blockage.add(new Boundary(0, 360, 420, 10));
     blockage.add(new Boundary(0, 300, 460, 10));
     blockage.add(new Boundary(0, 240, 520, 10));
-  }
+  
 }
 
 void draw()
 {
   background(0);
   box2d.step();
+  box2d1.step();
   
   if (gameState == 0)
   {
+    /*
     for (Menu box: men) 
     {
       fill(random(0,255), random(0,255), random(0,255));
       box.display();
       box.menuUpdate();
     }
-   
-    for (int i = 0; i < 150; i++) 
-    { 
-      Menu b = men.get(i);
-      if(b.done())
-      {
-        men.remove(i);
-      }
-    }
-    
+    */
     fill(255);
     menu();
   }
