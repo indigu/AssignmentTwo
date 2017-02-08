@@ -9,7 +9,7 @@ import ddf.minim.*;
 
 Minim minim;
 AudioPlayer soundOne;
-
+AudioPlayer soundTwo;
 
 Box2DProcessing box2d;
 Box2DProcessing box2d1;
@@ -37,6 +37,7 @@ void setup()
   
   minim = new Minim(this);
   soundOne = minim.loadFile("jump.mp3");
+  soundTwo = minim.loadFile("game.mp3");
   
   makeWorld();
   box2d1 = new Box2DProcessing(this);
@@ -48,6 +49,9 @@ void setup()
   blockage = new ArrayList<Boundary>();
   one = new Player(posX, posY);
   obstacle = new ArrayList<Obstacle>();
+  
+  soundTwo.rewind();
+  soundTwo.play();
   
   if(gameState == 0)
   { 
