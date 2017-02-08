@@ -1,4 +1,5 @@
 import shiffman.box2d.*;
+import org.jbox2d.common.*;
 import org.jbox2d.dynamics.joints.*;
 import org.jbox2d.collision.shapes.*;
 import org.jbox2d.collision.shapes.Shape;
@@ -131,7 +132,7 @@ void draw()
   }
 }
 
-
+/*
 void beginContact(Contact cp) 
 {
   Fixture f1 = cp.getFixtureA();
@@ -154,6 +155,7 @@ void beginContact(Contact cp)
     p1.colorChange();
   }
 }
+*/
 
 void endContact(Contact cp) 
 { 

@@ -49,7 +49,7 @@ class Player
     
     if (checkKey('w') && jumpReset)
     {
-      vel.y = 10;
+      vel.y = 11;
       jumpReset = false;
       soundOne.rewind();
       soundOne.play();
@@ -57,7 +57,7 @@ class Player
     
     if (checkKey('s'))
     {
-      vel.y = -5;
+      vel.y = -10;
       jumpReset = true;
     }
    
@@ -86,7 +86,7 @@ class Player
     fix1.shape = box;
     
     // Parameters that affect physics
-    fix1.density = 4;
+    fix1.density = 1;
     fix1.friction = 5;
     fix1.restitution = 0.02;
     

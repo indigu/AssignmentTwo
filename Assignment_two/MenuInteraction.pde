@@ -40,6 +40,9 @@ void menuText()
   
   textSize(22);
   text("Press SPACE to start!", text3, 220);
+  
+  textSize(22);
+  text("CONTROLS: A S D W!", text3, 300);
 }
 
 void updateText()
@@ -52,6 +55,11 @@ void updateText()
   if(text2 < 125)
   {
     text2 = text2 + 5; 
+  }
+  
+  if(text3 < 110)
+  {
+    text3 = text3 + 3;
   }
   
   if(text3 < 110)
