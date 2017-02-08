@@ -106,7 +106,7 @@ void draw()
       wall.show();
     }
    
-   if (random(1) < 0.2) 
+   if (random(1) < 0.1) 
    {
     Obstacle a = new Obstacle(360,100);
     obstacle.add(a);
@@ -125,10 +125,11 @@ void draw()
   }
     one.display();
     one.update();
+    one.done();
   }
 }
 
-/*
+
 void beginContact(Contact cp) 
 {
   Fixture f1 = cp.getFixtureA();
@@ -153,11 +154,9 @@ void beginContact(Contact cp)
 }
 
 void endContact(Contact cp) 
-{
-  
+{ 
 }
 
-*/
 void keyPressed()
 { 
   keys[keyCode] = true;

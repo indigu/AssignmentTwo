@@ -57,7 +57,7 @@ class Player
     
     if (checkKey('s'))
     {
-      vel.y = -10;
+      vel.y = -5;
       jumpReset = true;
     }
    
@@ -86,20 +86,25 @@ class Player
     fix1.shape = box;
     
     // Parameters that affect physics
-    fix1.density = 2;
+    fix1.density = 4;
     fix1.friction = 5;
     fix1.restitution = 0.02;
     
     player.createFixture(fix1);
   }
   
-  void killBody() {
-    box2d1.destroyBody(player);
+  void successText()
+  {
+    textSize(14);
+    fill(255);
+    text("Well done! You've reached the top of the wooooorld!", 60, 20);
   }
   
   boolean done() {
-    if (gameState == 1) {
-      killBody();
+    Vec2 pos = box2d1.getBodyPixelCoord(player);
+    if (pos.y < 100) 
+    {
+      successText();
       return true;
     }
     return false;
