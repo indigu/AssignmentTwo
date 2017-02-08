@@ -7,6 +7,7 @@ import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.*;
 
 Box2DProcessing box2d;
+
 PFont font;
 
 float timeDelta = 1.0f/60.0f;
@@ -36,7 +37,7 @@ void setup()
   blockage = new ArrayList<Boundary>();
   one = new Player(posX, posY);
   
-  if(gameState == 1)
+  if(gameState == 0)
   { 
     men = new ArrayList<Menu>();
     
@@ -51,7 +52,7 @@ void setup()
   }
   
   //Stage One
-  if(gameState == 0)
+  if(gameState == 1)
   {    
     obstacle = new ArrayList<Obstacle>();
     
@@ -73,8 +74,8 @@ void draw()
   box2d.step();
   
  
-  /*
-  if (gameState == 1)
+  
+  if (gameState == 0)
   {
     for (Menu box: men) 
     {
@@ -95,34 +96,26 @@ void draw()
     fill(255);
     menu();
   }
-  */
   
-  if (gameState == 0)
+  
+  if (gameState == 1)
   {
-    /*
-    for (int i = 0; i < 150; i++) 
-    { 
-      Menu b = men.get(i);
-      if(b.done())
-      {
-        men.remove(i);
-      }
-    */
     
     for (Boundary wall: blockage) 
     {
       wall.show();
     }
-    
+   
    if (random(1) < 0.2) 
    {
     Obstacle a = new Obstacle(360,100);
     obstacle.add(a);
    }
-    
-   for (Obstacle a: obstacle) {
+
+   for (Obstacle a: obstacle) 
+   {
     a.display();
-  } 
+   } 
   
   for (int i = obstacle.size()-1; i >= 0; i--) {
     Obstacle a = obstacle.get(i);
@@ -135,7 +128,7 @@ void draw()
   }
 }
 
-
+/*
 void beginContact(Contact cp) 
 {
   Fixture f1 = cp.getFixtureA();
@@ -161,8 +154,10 @@ void beginContact(Contact cp)
 
 void endContact(Contact cp) 
 {
+  
 }
 
+*/
 void keyPressed()
 { 
   keys[keyCode] = true;
@@ -186,4 +181,9 @@ void makeWorld()
 {
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
+}
+
+void destroyWorld()
+{
+  box2d = null;
 }

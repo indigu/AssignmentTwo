@@ -58,7 +58,7 @@ class Obstacle
   }
   boolean done() {
     Vec2 pos = box2d.getBodyPixelCoord(obstacle);
-    if (pos.y > height-19) 
+    if (pos.y > height-20) 
     {
       killBody();
       return true;
